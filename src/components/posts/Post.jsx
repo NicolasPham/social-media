@@ -1,34 +1,67 @@
-import "./post.css";
+import "./post.scss";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import Comments from "../comments/Comments";
+import { comments } from "../../constants";
 
-export default function Post() {
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import TextsmsOutlinedIcon from "@mui/icons-material/TextsmsOutlined";
+import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+
+export default function Post(props) {
+  const [like, setLike] = useState(false);
+  const [showComment, setShowComment] = useState(false);
+
+  const likePost = () => {
+    setLike(!like);
+    return like;
+  };
+
+  const handleShowComment = () => {
+    setShowComment(!showComment);
+    return showComment;
+  };
+
   return (
-    <article className="post">
-      <img
-        src="https://images.unsplash.com/photo-1670272590027-72888b060829?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1631&q=80"
-        alt=""
-        className="postImg"
-      />
-      <div className="postInfo">
-        <div className="postCats">
-          <span className="postCat">Life</span>
-          <span className="postCat">Music</span>
+    <div className="post">
+      <div className="userInfo">
+        <div className="left">
+          <img src={props.post.profilePic} alt="" />
+          <div>
+            <Link to={`/profile/${props.post.userId}`} className="link">
+              <span>{props.post.name}</span>
+            </Link>
+            <span>{props.post.date}</span>
+          </div>
         </div>
-        <div className="postTitle">Lorem ipsum dolor sit amet</div>
-        <hr />
-        <span className="postDate">1 hr ago</span>
+
+        <span className="right">...</span>
       </div>
-      <p className="postDesc">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Error dolores
-        quam illo nihil ex vel, voluptates placeat esse laudantium, dolorem
-        natus? Laboriosam ut est quam beatae placeat dolorum odit molestias.
-        Reiciendis ad quae tempore? Pariatur provident mollitia magnam eaque
-        laudantium sunt aliquam dolores inventore, sequi, incidunt voluptas
-        suscipit eos voluptate perferendis! Officiis eligendi quam qui
-        voluptatum corporis illum expedita nostrum? Perferendis porro quod
-        itaque laborum ullam eum mollitia ratione placeat blanditiis numquam,
-        fugit nisi possimus excepturi unde dolor, doloremque dolorum modi amet
-        culpa, repellat qui veritatis est hic eius. Hic!
-      </p>
-    </article>
+      <div className="content">
+        <span>{props.post.desc}</span>
+        <img src={props.post.img} alt="" />
+      </div>
+      <div className="interaction">
+        <div className="item" onClick={likePost}>
+          {like ? (
+            <FavoriteIcon className="icon" style={{ color: "red" }} />
+          ) : (
+            <FavoriteBorderIcon className="icon" />
+          )}
+
+          <span>Likes</span>
+        </div>
+        <div className="item" onClick={handleShowComment}>
+          <TextsmsOutlinedIcon className="icon" />
+          <span>{comments.length} Comments</span>
+        </div>
+        <div className="item">
+          <ShareOutlinedIcon className="icon" />
+          <span>Share</span>
+        </div>
+      </div>
+      {showComment && <Comments />}
+    </div>
   );
 }

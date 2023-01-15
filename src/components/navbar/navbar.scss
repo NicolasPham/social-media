@@ -1,0 +1,74 @@
+// @import '../../style.scss';
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  height: 50px;
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid var(--border);
+  font-family: 'Kanit', sans-serif;
+  background-color: var(--bg);
+  color: var(--textColor);
+  z-index: 999;
+
+  .left{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    span{
+      font-size: 24px;
+      font-weight: bold;
+      color: tomato;
+    }
+
+    .search{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 5px;
+
+      input{
+        border: none;
+        width: 400px;
+        font-size: 16px;
+        background-color: transparent;
+        color: var(--textColor);
+
+        @media (max-width:480px) {
+          display: none;
+        }
+
+        @media (max-width: 960px) {
+          width: 200px;
+        }
+      }
+    }
+  }
+
+
+
+  .right{
+    display:flex;
+    align-items: center;
+    gap: 15px;
+
+    @media (max-width:480px) {
+      display: none;
+    }
+
+    .user{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+      cursor: pointer;
+        
+    }
+  }
+}

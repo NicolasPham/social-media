@@ -1,27 +1,39 @@
-import { Link } from "react-router-dom";
 import "./login.scss";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
 
-export default function Login() {
+export default function Login(props) {
+  const { login } = useContext(AuthContext);
+
+  const handleLogin = () => {
+    login();
+  };
+
   return (
     <div className="login">
-      <span className="loginTitle">Login</span>
-      <form action="" className="loginForm">
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" placeholder="Enter your email..." />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          placeholder="Enter your password..."
-        />
-        <button className="loginButton">Login</button>
-      </form>
-
-      <button className="loginRegisterButton">
-        <Link to="/register" className="link">
-          Register
-        </Link>
-      </button>
+      <div className="card">
+        <div className="left">
+          <h1>Welcome to OPS.</h1>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime
+            magni numquam mollitia. Architecto voluptate similique consequuntur
+            reprehenderit delectus perspiciatis?
+          </p>
+          <span>Do you have an account?</span>
+          <Link to="/register" className="link">
+            <button>Register</button>
+          </Link>
+        </div>
+        <div className="right">
+          <h1>Login</h1>
+          <form action="">
+            <input type="text" id="username" placeholder="Username" />
+            <input type="password" id="password" placeholder="Password" />
+            <button onClick={handleLogin}>Login</button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

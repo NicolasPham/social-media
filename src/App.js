@@ -1,26 +1,89 @@
-import Topbar from "./components/topbar/Topbar";
+import "./style.scss";
+import { useState, useContext } from "react";
+/******* PAGES *******/
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Home from "./pages/home/Home";
-import Setting from "./pages/setting/Setting";
-import Single from "./pages/single/Single";
-import Write from "./pages/write/Write";
+import Profile from "./pages/profile/Profile";
+/******* COMPONENTS *******/
+import Leftbar from "./components/leftbar/Leftbar";
+import Rightbar from "./components/rightbar/Rightbar";
+import Navbar from "./components/navbar/Navbar";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  Navigate
+} from "react-router-dom";
+/*** Context ***/
+import { AuthContext } from "./context/authContext";
 
 export default function App() {
-  const user = true;
+  const [mode, setMode] = useState(true);
+  const toggleMode = () => {
+    setMode(!mode);
+    return mode;
+  };
+
+  /*****Authenticated ******/
+  const { currentUser } = useContext(AuthContext);
+  /***************** */
+
+  const Layout = () => {
+    return (
+      <div className={`${mode ? "theme-light" : "theme-dark"}`}>
+        <Navbar mode={mode} changeMode={toggleMode} />
+        <div style={{ display: "flex" }}>
+          <Leftbar />
+          <div style={{ flex: 6 }}>
+            <Outlet />
+          </div>
+          <Rightbar />
+        </div>
+      </div>
+    );
+  };
+
+  const ProtectedRoute = ({ children }) => {
+    if (!currentUser) {
+      return <Navigate to="/login" />;
+    }
+    return children;
+  };
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <ProtectedRoute>
+          <Layout />
+        </ProtectedRoute>
+      ),
+      children: [
+        {
+          path: "/",
+          element: <Home />
+        },
+        {
+          path: "/profile/:id",
+          element: <Profile />
+        }
+      ]
+    },
+    {
+      path: "/login",
+      element: <Login />
+    },
+    {
+      path: "/register",
+      element: <Register />
+    }
+  ]);
+
   return (
-    <Router>
-      <Topbar user={user} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={user ? <Home /> : <Login />} />
-        <Route path="/register" element={user ? <Home /> : <Register />} />
-        <Route path="/post/:postId" element={user ? <Single /> : <Login />} />
-        <Route path="/:id/setting" element={user ? <Setting /> : <Login />} />
-        <Route path="/:id/write" element={user ? <Write /> : <Login />} />
-      </Routes>
-    </Router>
+    <div className="App">
+      <RouterProvider router={router} />
+    </div>
   );
 }

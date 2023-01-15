@@ -1,0 +1,23 @@
+.profileIcon {
+  text-decoration: none;
+  color: var(--textColor);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  @media (max-width: 960px) {
+    display: none;
+  }
+
+  img{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  span{
+    font-size: 14px;
+    text-decoration: none;
+    color: var(--textColor);
+  }
+}

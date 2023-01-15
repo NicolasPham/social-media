@@ -1,0 +1,114 @@
+.post {
+  font-family: 'Mukta', sans-serif;
+  background: var(--bg);
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  
+
+  
+
+  .userInfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+
+    .left{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+
+      img{
+        width: 30px;
+        height: 30px;
+        object-fit: cover;
+        border-radius: 50%;
+
+
+      }
+      div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:start;
+        line-height: 18px;
+
+        .link {
+          text-decoration: none;
+
+          span{
+            font-weight: 700;
+            color: var(--textColor);
+            font-size: 14px;
+
+          }
+        }
+        
+        // :first-child {
+        //   font-weight: bold;
+        //   color: var(--textColor);
+        //   cursor: pointer;
+        // }
+
+        :last-child{
+          font-size: 12px;
+          font-weight: 300;
+          color: var(--textColor);
+        }
+      }
+    }
+    .right{
+      font-size: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--textColor);
+    }
+  }
+
+
+  .content{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    
+    span{
+      margin-bottom: 30px;
+      color: var(--textColor);
+    }
+    img{
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .interaction{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+      align-items: start;
+    }
+    
+    .item{
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      color: var(--textColor);
+
+      .icon{}
+
+      span{}
+    }
+  }
+}

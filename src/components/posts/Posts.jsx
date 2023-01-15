@@ -1,20 +1,15 @@
-import "./posts.css";
+import "./posts.scss";
+import { posts } from "../../constants/";
 import Post from "./Post";
 
 export default function Posts() {
   return (
-    <div className="posts">
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-    </div>
+    <article className="posts">
+      {posts.map((post, index) => (
+        <div className="post" key={index}>
+          <Post post={post} />
+        </div>
+      ))}
+    </article>
   );
 }

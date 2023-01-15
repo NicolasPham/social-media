@@ -1,0 +1,23 @@
+
+:root {
+  .theme-light {
+    --textColor: #000;
+    --bg: white;
+    --bgSoft: #f6f3f3;
+    --textColorSoft: #555;
+    --border: lightgray;
+  }
+
+  .theme-dark {
+    --textColor: whitesmoke;
+    --bg: #222;
+    --bgSoft: #333;
+    --textColorSoft: lightgray;
+    --border: #444;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}

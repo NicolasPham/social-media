@@ -4,27 +4,30 @@ import { Link } from "react-router-dom";
 export default function Register() {
   return (
     <div className="register">
-      <span className="registerTitle">Register</span>
-      <form action="" className="registerForm">
-        <label htmlFor="username">Username</label>
-        <input type="text" id="username" placeholder="Enter your username..." />
-
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" placeholder="Enter your email..." />
-
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          placeholder="Enter your password..."
-        />
-        <button className="registerButton">Register</button>
-      </form>
-      <button className="registerLoginButton">
-        <Link to="/login" className="link">
-          Login
-        </Link>
-      </button>
+      <div className="card">
+        <div className="left">
+          <h1>Register</h1>
+          <form action="">
+            <input type="text" placeholder="Username" />
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <input type="text" placeholder="Name" />
+            <button>Register</button>
+          </form>
+        </div>
+        <div className="right">
+          <h1>OPS Social.</h1>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime
+            magni numquam mollitia. Architecto voluptate similique consequuntur
+            reprehenderit delectus perspiciatis?
+          </p>
+          <span>Do you have an account?</span>
+          <Link to="/login" className="link">
+            <button>Login</button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
