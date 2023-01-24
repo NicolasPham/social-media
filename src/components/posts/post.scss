@@ -30,14 +30,12 @@
         height: 30px;
         object-fit: cover;
         border-radius: 50%;
-
-
       }
       div{
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items:start;
+        align-items:flex-start;
         line-height: 18px;
 
         .link {
@@ -105,10 +103,6 @@
       gap: 5px;
       cursor: pointer;
       color: var(--textColor);
-
-      .icon{}
-
-      span{}
     }
   }
 }
