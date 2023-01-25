@@ -10,7 +10,7 @@ export const AuthContextProvider = ({ children }) => {
   const login = () => {
     setCurrentUser({
       id: 1,
-      name: "Ryan Pham",
+      name: "admin",
       profile:
         "https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
     });

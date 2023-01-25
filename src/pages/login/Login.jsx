@@ -30,7 +30,9 @@ export default function Login(props) {
           <form action="">
             <input type="text" id="username" placeholder="Username" />
             <input type="password" id="password" placeholder="Password" />
+            <Link to="/">
             <button onClick={handleLogin}>Login</button>
+            </Link>
           </form>
         </div>
       </div>

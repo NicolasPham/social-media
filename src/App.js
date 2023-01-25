@@ -27,6 +27,7 @@ export default function App() {
   };
 
   /*****Authenticated ******/
+
   const { currentUser } = useContext(AuthContext);
   /***************** */
 
@@ -49,6 +50,7 @@ export default function App() {
     if (!currentUser) {
       return <Navigate to="/login" />;
     }
+    
     return children;
   };
 
@@ -58,7 +60,7 @@ export default function App() {
       element: (
         <ProtectedRoute>
           <Layout />
-        </ProtectedRoute>
+        // </ProtectedRoute>
       ),
       children: [
         {
