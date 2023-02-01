@@ -34,6 +34,7 @@ export default function Login(props) {
             <button onClick={handleLogin}>Login</button>
             </Link>
           </form>
+          <p>Username: nick  / password: nick</p>
         </div>
       </div>
     </div>
